@@ -1,0 +1,101 @@
+@{
+    ViewData["Title"] = "SCORE BOARD";
+    int i = 0;
+    int remainingTasks = 10 - Model.Count;
+}
+
+@model List<ScoreBoard>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/score.css" />
+}
+
+<div class="wrapper">
+    <div class="title">
+        <ul>
+            <li>Name</li>
+            <li>Awards</li>
+            <li>Items Completed</li>
+            <li>Points</li>
+            <li>Position</li>
+        </ul>
+    </div>
+
+    @if (Model.Count < 10)
+    {
+        @for (int j = 0; j < remainingTasks; j++)
+        {
+            Model.Add(null);
+        }
+    }
+
+    @foreach (var task in Model)
+    {
+        i++;
+        @if (i == 1 || i == 2 || i == 3)
+        {
+            <div class="row nfl">
+                <ul>
+                    <li><a href="#">@(task != null ? task.UserName : "--")</a></li>
+                    <li>@(task != null ? task.Awards : "--")</li>
+                    <li>@(task != null ? task.Completed : "--")</li>
+                    <li>@(task != null ? task.Points : "--")</li>
+                    <li>@(task != null ? task.Position + " ST" : "--")</li>
+                </ul>
+            </div>
+            continue;
+        }
+
+        if (i == 4 || i == 5)
+        {
+            <div class="row mlb">
+                <ul>
+                    <li><a href="#">@(task != null ? task.UserName : "--")</a></li>
+                    <li>@(task != null ? task.Awards : "--")</li>
+                    <li>@(task != null ? task.Completed : "--")</li>
+                    <li>@(task != null ? task.Points : "--")</li>
+                    <li>@(task != null ? task.Position + " ST" : "--")</li>
+                </ul>
+            </div>
+            continue;
+        }
+
+        if (i == 6 || i == 7)
+        {
+            <div class="row nhl">
+                <ul>
+                    <li><a href="#">@(task != null ? task.UserName : "--")</a></li>
+                    <li>@(task != null ? task.Awards : "--")</li>
+                    <li>@(task != null ? task.Completed : "--")</li>
+                    <li>@(task != null ? task.Points : "--")</li>
+                    <li>@(task != null ? task.Position + " ST" : "--")</li>
+                </ul>
+            </div>
+            continue;
+        }
+
+        if (i == 8 || i == 9 || i == 10)
+        {
+            <div class="row pga">
+                <ul>
+                    <li><a href="#">@(task != null ? task.UserName : "--")</a></li>
+                    <li>@(task != null ? task.Awards : "--")</li>
+                    <li>@(task != null ? task.Completed : "--")</li>
+                    <li>@(task != null ? task.Points : "--")</li>
+                    <li>@(task != null ? task.Position + " ST" : "--")</li>
+                </ul>
+            </div>
+            continue;
+        }
+    }
+
+    <div class="row mlb">
+        <ul>
+            <li><a href="#"><span class="you">You -> </span>@ViewBag.name</a></li>
+            <li>@ViewBag.awards</li>
+            <li>@ViewBag.completed</li>
+            <li>@ViewBag.points</li>
+            <li>@ViewBag.position ST</li>
+        </ul>
+    </div>
+</div>

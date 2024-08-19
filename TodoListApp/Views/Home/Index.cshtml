@@ -1,0 +1,122 @@
+﻿@{
+    ViewData["Title"] = "TO-DO LİST";
+}
+
+@using System.Text.Json
+@model List<TodoList>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/index.css" />
+}
+
+@section Scripts {
+    <script src="~/js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let input = document.getElementById("input-box");
+
+            let tasks = @Html.Raw(JsonSerializer.Serialize(Model));
+
+            if (tasks != null && tasks.length > 0) {
+                tasks.forEach(task => {
+                    input.value = task.Label;
+                    var button = document.getElementById('input-button');
+                    button.onclick = function () {
+                        addTask(task.Checked, false);
+                    };
+                    button.click();
+                });
+            }
+        });
+    </script>
+
+    <script>
+        function addItem(label, isChecked) {
+            $.ajax({
+                url: '@Url.Action("AddItem", "Home")',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ label: label, checked: isChecked }),
+                success: function (response) {
+                    if (response.success) {
+                        listContainer.lastElementChild.querySelector("label").id = response.id;
+                    }
+                }
+            });
+        }
+
+        function deleteItem(id) {
+            $.ajax({
+                url: '@Url.Action("DeleteItem", "Home")',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ userId: id }),
+                success: function (response) {
+                    if (response.success) { }
+                }
+            });
+        }
+
+        function updateItem(id, label, isChecked) {
+            $.ajax({
+                url: '@Url.Action("UpdateItem", "Home")',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ userId: id, label: label, checked: isChecked }),
+                success: function (response) {
+                    if (response.success) { }
+                }
+            });
+        }
+
+        function updateCompleted(complet) {
+            $.ajax({
+                url: '@Url.Action("CompletedUpdate", "Home")',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ completed: complet }),
+                success: function (response) {
+                    if (response.success) { }
+                }
+            });
+        }
+
+        function updateScore(score) {
+            $.ajax({
+                url: '@Url.Action("ScoreUpdate", "Home")',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ points: score }),
+                success: function (response) {
+                    if (response.success) { }
+                }
+            });
+        }
+    </script>
+}
+
+<div id="todo-container">
+    <div id="header">
+        <h1>To Do List</h1>
+    </div>
+
+    <div id="todo-form">
+        <input type="text" class="input-item" name="input_box" id="input-box" placeholder="Add Task" />
+
+        <button id="input-button" onclick="addTask(false, true)">Add</button>
+    </div>
+
+    <h2>Task List</h2>
+    <ul id="list-container"></ul>
+
+    <hr>
+
+    <div class="counter-container">
+        <div id="task-counters">
+            Completed: <span id="completed-counter">0</span> | Uncompleted:
+            <span id="uncompleted-counter">0</span> | Score:
+            <span id="score-counter">@ViewBag.Score</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @RenderSection("Styles", required: false)
+</head>
+
+<body>
+    <div class="sidebar-container" id="sidebar-container">
+        <div class="container-menu" id="menuButton">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <ol>
+                <li><a class="arrow" asp-area="" asp-controller="Home" asp-action="Index"><i
+                            class="fa-solid fa-right-long"></i>Ana Sayfa</a></li>
+                <li><a class="arrow" asp-area="" asp-controller="Home" asp-action="Score"><i
+                            class="fa-solid fa-right-long"></i>Skore Tablosu</a></li>
+                <li><a class="arrow" asp-area="" asp-controller="Home" asp-action="Profile"><i
+                            class="fa-solid fa-right-long"></i>Profil</a></li>
+                <li><a class="arrow" asp-area="" asp-controller="Login" asp-action="Login"><i
+                            class="fa-solid fa-right-long"></i>Çıkış Yap</a></li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <script src="~/js/site.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

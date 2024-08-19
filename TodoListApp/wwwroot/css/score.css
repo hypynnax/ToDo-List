@@ -1,0 +1,141 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 75%;
+    height: 85%;
+    background-color: rgba(41, 33, 33, 1);
+}
+
+.row {
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.row:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 150%;
+}
+
+.row ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+}
+
+.row ul li {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.title {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-left: 5px solid rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+}
+
+.title ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    list-style: none;
+}
+
+.title ul li {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nfl a,
+.mlb a,
+.nhl a,
+.pga a {
+    text-decoration: none;
+    transition: color 0.2s ease-out;
+    padding-left: 30px;
+}
+
+.nfl a {
+    color: rgba(79, 192, 210, 1);
+}
+
+.nfl a:hover {
+    color: rgba(79, 192, 210, 0.8);
+}
+
+.mlb a {
+    color: rgba(82, 210, 154, 1);
+}
+
+.mlb a:hover {
+    color: rgba(82, 210, 154, 0.8);
+}
+
+.nhl a {
+    color: rgba(231, 196, 104, 1);
+}
+
+.nhl a:hover {
+    color: rgba(231, 196, 104, 0.8);
+}
+
+.pga a {
+    color: rgba(235, 118, 85, 1);
+}
+
+.pga a:hover {
+    color: rgba(235, 118, 85, 0.8);
+}
+
+.nfl {
+    border-left: 5px solid rgba(79, 192, 210, 0.8);
+}
+
+.nfl:hover {
+    border-left: 5px solid rgba(79, 192, 210, 1);
+}
+
+.mlb {
+    border-left: 5px solid rgba(82, 210, 154, 0.8);
+}
+
+.mlb:hover {
+    border-left: 5px solid rgba(82, 210, 154, 1);
+}
+
+.nhl {
+    border-left: 5px solid rgba(231, 196, 104, 0.8);
+}
+
+.nhl:hover {
+    border-left: 5px solid rgba(231, 196, 104, 1);
+}
+
+.pga {
+    border-left: 5px solid rgba(235, 118, 85, 0.8);
+}
+
+.pga:hover {
+    border-left: 5px solid rgba(235, 118, 85, 1);
+}
+
+.you {
+    color: gold;
+    display: inline;
+}
